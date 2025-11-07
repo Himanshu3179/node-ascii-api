@@ -4,7 +4,7 @@ const { Jimp, intToRGBA } = require("jimp");
 
 const app = express();
 const port = 3000;
-
+app.use(express.static("public"));
 // Multer setup for in-memory upload
 const storage = multer.memoryStorage();
 const upload = multer({
@@ -13,7 +13,8 @@ const upload = multer({
 });
 
 // Ultra-detailed ASCII ramp (94 characters)
-const ASCII_RAMP = " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$%&QWM@#B8&%$";
+const ASCII_RAMP =
+  " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$%&QWM@#B8&%$";
 // You can replace with a custom ramp for a different texture
 
 // Aspect ratio correction for monospace fonts
@@ -35,7 +36,8 @@ function enhanceImage(image, contrast = 0.25, gamma = 1.1, brightness = 0.05) {
     let intensity = 0.299 * r + 0.587 * g + 0.114 * b;
 
     // --- 2️⃣ Contrast enhancement (center around 128)
-    const factor = (259 * (contrast * 255 + 255)) / (255 * (259 - contrast * 255));
+    const factor =
+      (259 * (contrast * 255 + 255)) / (255 * (259 - contrast * 255));
     intensity = factor * (intensity - 128) + 128;
 
     // --- 3️⃣ Gamma correction
@@ -124,7 +126,11 @@ app.post("/ascii", upload.single("image"), async (req, res) => {
 
 // --- Start Server ---
 app.listen(port, () => {
-  console.log(`✅ Ultra-Quality ASCII Art API running at http://localhost:${port}`);
+  console.log(
+    `✅ Ultra-Quality ASCII Art API running at http://localhost:${port}`
+  );
   console.log("➡️  Example:");
-  console.log("   curl -F 'image=@photo.jpg' 'http://localhost:3000/ascii?width=260&contrast=0.3&gamma=1.15&brightness=0.05'");
+  console.log(
+    "   curl -F 'image=@photo.jpg' 'http://localhost:3000/ascii?width=260&contrast=0.3&gamma=1.15&brightness=0.05'"
+  );
 });
