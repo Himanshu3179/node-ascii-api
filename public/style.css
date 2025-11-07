@@ -146,17 +146,42 @@ button:disabled {
   position: relative;
 }
 
-.download-btn {
+/* UPDATED STYLES FOR BUTTONS */
+.button-group {
   position: absolute;
   top: 1rem;
   right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.download-btn {
+  /* position: absolute; IS REMOVED */
   background-color: #4caf50;
   font-size: 0.8rem;
   padding: 8px 12px;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
 }
 
 .download-btn:hover {
   background-color: #388e3c;
+}
+
+/* NEW STYLES FOR PNG BUTTON */
+.download-btn.png {
+  background-color: #007aff;
+}
+.download-btn.png:hover {
+  background-color: #0056b3;
+}
+.download-btn:disabled {
+  background-color: #999;
+  cursor: not-allowed;
 }
 
 .ascii-output {

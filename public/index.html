@@ -1,57 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ASCII Art Generator</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  </head>
+  <body>
     <div class="container">
-        <h1>Ultra-Quality ASCII Art Generator</h1>
-        
-        <form id="ascii-form" class="controls-container">
-            <div class="file-upload">
-                <label for="image-upload" class="custom-file-upload">Choose Image</label>
-                <input id="image-upload" type="file" accept="image/*" required>
-                <img id="preview-img" class="preview-img" alt="Image preview" style="display:none;">
-            </div>
-            
-            <div class="options-grid">
-                <div class="option">
-                    <label for="width">Width: <span id="width-val">240</span></label>
-                    <input type="range" id="width" name="width" min="80" max="600" step="10" value="240">
-                </div>
-                <div class="option">
-                    <label for="contrast">Contrast: <span id="contrast-val">0.25</span></label>
-                    <input type="range" id="contrast" name="contrast" min="-1" max="1" step="0.05" value="0.25">
-                </div>
-                <div class="option">
-                    <label for="gamma">Gamma: <span id="gamma-val">1.1</span></label>
-                    <input type="range" id="gamma" name="gamma" min="0.1" max="3" step="0.1" value="1.1">
-                </div>
-                <div class="option">
-                    <label for="brightness">Brightness: <span id="brightness-val">0.05</span></label>
-                    <input type="range" id="brightness" name="brightness" min="-1" max="1" step="0.05" value="0.05">
-                </div>
-                <div class="option-check">
-                    <input type="checkbox" id="invert" name="invert">
-                    <label for="invert">Invert (Dark Mode)</label>
-                </div>
-            </div>
+      <h1>Ultra-Quality ASCII Art Generator</h1>
 
-            <button type="submit" id="generate-btn">Generate ASCII Art</button>
-        </form>
-
-        <div id="error-message" class="error-message" style="display:none;"></div>
-
-        <div id="result-container" class="result-container" style="display:none;">
-            <button id="download-btn" class="download-btn">Download .txt</button>
-            <pre id="ascii-output" class="ascii-output"></pre>
+      <form id="ascii-form" class="controls-container">
+        <div class="file-upload">
+          <label for="image-upload" class="custom-file-upload"
+            >Choose Image</label
+          >
+          <input id="image-upload" type="file" accept="image/*" required />
+          <img
+            id="preview-img"
+            class="preview-img"
+            alt="Image preview"
+            style="display: none"
+          />
         </div>
+
+        <div class="options-grid">
+          <div class="option">
+            <label for="width">Width: <span id="width-val">240</span></label>
+            <input
+              type="range"
+              id="width"
+              name="width"
+              min="80"
+              max="600"
+              step="10"
+              value="240"
+            />
+          </div>
+          <div class="option">
+            <label for="contrast"
+              >Contrast: <span id="contrast-val">0.25</span></label
+            >
+            <input
+              type="range"
+              id="contrast"
+              name="contrast"
+              min="-1"
+              max="1"
+              step="0.05"
+              value="0.25"
+            />
+          </div>
+          <div class="option">
+            <label for="gamma">Gamma: <span id="gamma-val">1.1</span></label>
+            <input
+              type="range"
+              id="gamma"
+              name="gamma"
+              min="0.1"
+              max="3"
+              step="0.1"
+              value="1.1"
+            />
+          </div>
+          <div class="option">
+            <label for="brightness"
+              >Brightness: <span id="brightness-val">0.05</span></label
+            >
+            <input
+              type="range"
+              id="brightness"
+              name="brightness"
+              min="-1"
+              max="1"
+              step="0.05"
+              value="0.05"
+            />
+          </div>
+          <div class="option-check">
+            <input type="checkbox" id="invert" name="invert" />
+            <label for="invert">Invert (Dark Mode)</label>
+          </div>
+        </div>
+
+        <button type="submit" id="generate-btn">Generate ASCII Art</button>
+      </form>
+
+      <div id="error-message" class="error-message" style="display: none"></div>
+
+      <div id="result-container" class="result-container" style="display: none">
+        <div class="button-group">
+          <button id="download-png-btn" class="download-btn png">
+            Download .png
+          </button>
+          <button id="download-btn" class="download-btn">Download .txt</button>
+        </div>
+
+        <pre id="ascii-output" class="ascii-output"></pre>
+      </div>
     </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
